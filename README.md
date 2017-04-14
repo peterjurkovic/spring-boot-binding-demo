@@ -17,12 +17,12 @@ public class Props {
 in the `application.properties` is defined 
 
 ```
-com.text.property.v1.v2=test
+com.test.property.foo.bar=value
 ```
-Run `DemoApplication.java` - the applications starts proppelly, in the stdout you will see expected `property={v1={v2=test}}` 
+Run `DemoApplication.java` - the applications starts proppelly, in the stdout you will see expected `Props [property={foo={bar=value}}]` 
 
 
-Setup ENV variale `export COM_TEXT_PROPERTY_XXX_YYY=VALUE`
+Setup ENV variale `export COM_TEST_PROPERTY_XXX_YYY=VALUE`
 
 
 Run `DemoApplication.java` - The application fails to start
