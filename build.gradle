@@ -1,7 +1,6 @@
 buildscript {
 	ext {
 		springBootVersion = '1.5.2.RELEASE'
-		hibernateVersion = '5.0.12.Final'
 	}
 	repositories {
 		mavenCentral()
@@ -26,13 +25,9 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	compile 'org.springframework:spring-orm:4.3.7.RELEASE'
-	compile 'org.springframework:spring-tx:4.3.7.RELEASE'
+
 	
 	compile 'mysql:mysql-connector-java:5.1.14'
 	
-	compile "org.hibernate:hibernate-core:$hibernateVersion"
-    compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
-    compile "org.hibernate:hibernate-ehcache:$hibernateVersion"
-    compile 'com.mchange:c3p0:0.9.5'
+
 }

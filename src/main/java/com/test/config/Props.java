@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("com.text")
+@ConfigurationProperties("com.test")
 public class Props {
 
     private Map<String, Map<String, String>> property;
@@ -24,6 +24,4 @@ public class Props {
         return "Props [property=" + property + "]";
     }
 
-   
-    
 }
