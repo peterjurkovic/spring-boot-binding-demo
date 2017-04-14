@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.test.NumberAddresses" table="d_phone_number_address">
+        <cache usage="read-write"/>
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="native" />
+        </id>
+
+        <property name="accountId"      column="account_ref"    not-null="false" type="java.lang.String" length="50" />
+        <property name="fullName"       column="customer_name"  not-null="false" type="java.lang.String" length="50" />
+        <property name="companyName"    column="company_name"   not-null="false" type="java.lang.String" length="50" />
+        <property name="number"         column="number"         not-null="true" type="java.lang.String" length="50" />
+        <property name="numberType"     column="number_type"    not-null="true" type="java.lang.String" length="32" />
+        <property name="numberCountry"  column="number_country" not-null="true" type="java.lang.String" length="2" />
+        
+        <property name="addressLine1"   column="first_line"      not-null="false" type="java.lang.String" length="50" />
+        <property name="addressLine2"   column="second_line"     not-null="false" type="java.lang.String" length="50" />
+        <property name="city"           column="city"            not-null="false" type="java.lang.String" length="50" />
+        <property name="region"         column="region"          not-null="false" type="java.lang.String" length="50" />
+        <property name="postcode"       column="postcode"        not-null="false" type="java.lang.String" length="32" />
+
+        <property name="created"     column="created"      not-null="true" type="java.sql.Timestamp" />
+        <property name="lastUpdated" column="last_updated" not-null="true" type="java.sql.Timestamp"/>
+    </class>
+</hibernate-mapping>

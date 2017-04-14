@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+   
+    
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="org.gjt.mm.mysql.Driver" />
+
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/dashboard?useUnicode=true&amp;characterEncoding=UTF-8" />
+        <property name="user" value="dashboard" />
+        <property name="password" value="password" />
+
+        <property name="initialPoolSize" value="10" />
+        <property name="maxPoolSize" value="30" />
+        <property name="minPoolSize" value="5" />
+        
+    </bean>
+    <!-- END OF DATA SOURCES -->
+
+     <!-- SESSION FACTORIES -->
+    <!-- Hibernate SessionFactory -->
+    <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" id="sessionFactory">
+        <property name="dataSource" ref="dataSource" />
+
+     
+        <property name="mappingResources">
+            <list>
+				<value>NumberAddress.hbm.xml</value>
+			</list>
+        </property>
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+     			<prop key="hibernate.connection.release_mode">auto</prop>
+     			<prop key="hibernate.jdbc.batch_size">20</prop>
+     			<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> 
+				<prop key="hibernate.cache.use_second_level_cache">false</prop> 
+				<prop key="hibernate.bytecode.use_reflection_optimizer">false</prop>
+				<prop key="ehcache-hibernate.instance-name">dashboard</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="net.sf.ehcache.configurationResourceName">ehcache-dashboard.xml</prop>
+				<prop key="hibernate.id.new_generator_mappings">false</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- END OF SESSION FACTORIES -->
+
+    <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+    <bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" id="transactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <tx:annotation-driven transaction-manager="transactionManager" order="99" />
+  
+</beans>

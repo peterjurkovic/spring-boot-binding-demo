@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+	name="dashboard"
+	updateCheck="false">
+    <diskStore path="java.io.tmpdir/@webapp.name@-dashboard"/>
+    <defaultCache
+            maxElementsInMemory="1000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="@ehcache.overflowToDisk.enable@"
+            maxElementsOnDisk="10000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"
+            />
+    
+            
+    <cache name="networkCache"
+        maxElementsInMemory="2500"
+        eternal="false"
+        overflowToDisk="@ehcache.overflowToDisk.enable@"
+        timeToIdleSeconds="180"
+        diskPersistent="false"
+    />
+    
+    <cache name="networkCacheByMccMnc"
+        maxElementsInMemory="2500"
+        eternal="false"
+        overflowToDisk="@ehcache.overflowToDisk.enable@"
+        timeToIdleSeconds="180"
+        diskPersistent="false"
+    />
+    
+     <cache name="timezones"
+        maxElementsInMemory="500"
+        eternal="false"
+        overflowToDisk="false"
+        timeToIdleSeconds="300"
+        diskPersistent="false"
+    />
+       
+</ehcache>
