@@ -29,9 +29,9 @@ Run `DemoApplication.java` - The application fails to start
 
 
 ```
-Binding to target Props [property={v1={v2=test}}] failed:
+Binding to target Props [property={foo={bar=value}}] failed:
 
-    Property: com.text.property[XXX_YYY]
+    Property: com.test.property[XXX_YYY]
     Value: VALUE
     Reason: Failed to convert property value of type 'java.lang.String' to required type 'java.util.Map' for property 'property[XXX_YYY]'; nested exception is java.lang.IllegalStateException: Cannot convert value of type 'java.lang.String' to required type 'java.util.Map' for property 'property[XXX_YYY]': no matching editors or conversion strategy found
 
